@@ -14,28 +14,29 @@ const rhynn = new Person('Rhynn', 'Ardenn');
 
 // This class takes only two arguments, a first or birth name, and a last or sonship name. The Person class should only be used to create "born" persons.
 class Person {
-    constructor(firstName, lastName) {
-      this.birthName = firstName;
-      this.sonshipName = lastName;
-      this.consciousnessReleased = false;
-      this.philosophy = philosophies[randomNum2()];
-    }
-    
-    // Will return the full name of the born person.
-    get fullName() {
-      return `${this.birthName} ${this.sonshipName}`;
-    }
-    // Return the name of the Alter.
-    get alterName() {
-      return `${this.alterEgo.birthName} ${this.alterEgo.sonshipName}`; 
-    }
-  
-
-    // This method is used to create new alter persons as an object within the born person.
-    createAlter() {
-        this.alterEgo = new Alter(firstNames[randomNum()], lastNames[randomNum()]);
-    }
+  constructor(firstName, lastName) {
+    this.birthName = firstName;
+    this.sonshipName = lastName;
+    this.consciousnessReleased = false;
+    this.philosophy = philosophies[randomNum2()];
   }
+
+  // Will return the full name of the born person.
+  get fullName() {
+    return `${this.birthName} ${this.sonshipName}`;
+  }
+
+  // Return the name of the Alter.
+  get alterName() {
+    return `${this.alterEgo.birthName} ${this.alterEgo.sonshipName}`; 
+  }
+
+
+  // This method is used to create new alter persons as an object within the born person.
+  createAlter() {
+    this.alterEgo = new Alter(firstNames[randomNum()], lastNames[randomNum()]);
+  }
+}
 
 class Alter extends Person {
   constructor(firstName, lastName) {
@@ -48,11 +49,11 @@ class Alter extends Person {
 
 // Helper function to generate a random number that is the length of the array being queried.
 const randomNum = function returnRandomNumberForNames() {
-      return Math.floor(Math.random() * firstNames.length)
-  }
+  return Math.floor(Math.random() * firstNames.length)
+};
 const randomNum2 = () => {
-      return Math.floor(Math.random() * philosophies.length)
-  }
+  return Math.floor(Math.random() * philosophies.length)
+};
 
 
 // Create new Person with one Alter on button click and display a summary.

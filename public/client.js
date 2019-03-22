@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 // Define index elements here.
 const firstNameInput = document.getElementById('first_name');
 const lastNameInput = document.getElementById('last_name');
@@ -5,13 +6,15 @@ const person = document.getElementById('people');
 
 // Arrays for holding attributes that are selected at random.
 const firstNames = ['Lugan', 'Skerk', 'Visshi', 'Qammar', 'Solon'];
-const lastNames = ["Bij'dal", 'Thoon', 'Kafortu', 'Sander', 'Qirnal']
+const lastNames = ["Bij'dal", 'Thoon', 'Kafortu', 'Sander', 'Qirnal'];
 const philosophies = ['Materialist', 'Ermean', 'Nihilistic', 'Brutalist'];
 
 // Default people
+// eslint-disable-next-line no-unused-vars
 const donJang = new Person('Don', 'Jang');
 const rhynn = new Person('Rhynn', 'Ardenn');
 
+// eslint-disable-next-line max-len
 // This class takes only two arguments, a first or birth name, and a last or sonship name. The Person class should only be used to create "born" persons.
 class Person {
   constructor(firstName, lastName) {
@@ -49,15 +52,14 @@ class Alter extends Person {
 
 // Helper function to generate a random number that is the length of the array being queried.
 const randomNum = function returnRandomNumberForNames() {
-  return Math.floor(Math.random() * firstNames.length)
+  return Math.floor(Math.random() * firstNames.length);
 };
-const randomNum2 = () => {
-  return Math.floor(Math.random() * philosophies.length)
+const randomNum2 = function returnRandomNumberForPhilosophies() {
+  return Math.floor(Math.random() * philosophies.length);
 };
 
 
 // Create new Person with one Alter on button click and display a summary.
-
 document.getElementById('create-person').addEventListener('click', () => {
   const person1 = new Person(firstNameInput.value, lastNameInput.value);
   person1.createAlter();

@@ -2,7 +2,7 @@
 // Define index elements here.
 const firstNameInput = document.getElementById('first_name');
 const lastNameInput = document.getElementById('last_name');
-const person = document.getElementById('people');
+const createPersonBtn = document.getElementById('people');
 
 // Arrays for holding attributes that are selected at random.
 const firstNames = ['Lugan', 'Skerk', 'Visshi', 'Qammar', 'Solon'];
@@ -21,7 +21,7 @@ class Person {
     this.birthName = firstName;
     this.sonshipName = lastName;
     this.consciousnessReleased = false;
-    this.philosophy = philosophies[randomNum2()];
+    this.philosophy = philosophies[randomPhilosophy()];
   }
 
   // Will return the full name of the born person.
@@ -37,7 +37,7 @@ class Person {
 
   // This method is used to create new alter persons as an object within the born person.
   createAlter() {
-    this.alterEgo = new Alter(firstNames[randomNum()], lastNames[randomNum()]);
+    this.alterEgo = new Alter(firstNames[randomName()], lastNames[randomName()]);
   }
 }
 
@@ -51,19 +51,19 @@ class Alter extends Person {
 }
 
 // Helper function to generate a random number that is the length of the array being queried.
-const randomNum = function returnRandomNumberForNames() {
+const randomName = function returnRandomNumberForNames() {
   return Math.floor(Math.random() * firstNames.length);
 };
-const randomNum2 = function returnRandomNumberForPhilosophies() {
+const randomPhilosophy = function returnRandomNumberForPhilosophies() {
   return Math.floor(Math.random() * philosophies.length);
 };
 
 
 // Create new Person with one Alter on button click and display a summary.
 document.getElementById('create-person').addEventListener('click', () => {
-  const person1 = new Person(firstNameInput.value, lastNameInput.value);
-  person1.createAlter();
-  return person.innerHTML = `${person1.fullName} is of ${person1.philosophy} philosophy and has one alter named ${person1.alterName} which is of ${person1.alterEgo.philosophy} philosophy.`;
+  const newPerson = new Person(firstNameInput.value, lastNameInput.value);
+  newPerson.createAlter();
+  return createPersonBtn.innerHTML = `${newPerson.fullName} is of ${newPerson.philosophy} philosophy and has one alter named ${newPerson.alterName} which is of ${newPerson.alterEgo.philosophy} philosophy.`;
 });
 
 
